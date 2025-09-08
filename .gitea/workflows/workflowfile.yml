@@ -25,10 +25,10 @@ jobs:
 
       - name: Run tests
         run: |
-          PYTHONPATH=. pytest --html=report.html --self-contained-html --maxfail=1 --disable-warnings -q
+          PYTHONPATH=. pytest --html=report_${{ matrix.python-version }}.html --self-contained-html --maxfail=1 --disable-warnings -q
 
       - name: Upload report as package
         uses: actions/upload-artifact@v3
         with:
           name: pytest-report
-          path: report.html
+          path: report_${{ matrix.python-version }}.html
