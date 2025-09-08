@@ -6,7 +6,12 @@ on:
       - main
   schedule:
     - cron: '0 2 * * *' 
-
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Environment to run"
+        required: true
+        default: "test"
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
@@ -48,6 +53,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Set up virtual environment
         run: python3 -m venv venv
 
