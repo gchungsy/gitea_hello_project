@@ -5,23 +5,32 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 2 * * *' 
+    - cron: '0 2 * * *'
   workflow_dispatch:
+    # Optional inputs
     inputs:
-      env:
-        description: "Environment to run"
+      branch:
+        description: 'Branch to run tests on'
         required: true
-        default: "test"
+        default: 'main'
+      environment:
+        description: 'Target environment'
+        required: false
+        default: 'staging'
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
     env:
-      ENV_NAME: production
+      ENV_NAME: ${{ matrix.python-version }}
     strategy:
       matrix:
         python-version: [ "3.9", "3.10", "3.11" ]
         #os: [ubuntu-latest, linux]
     steps:
+
+      - name: Set environment
+        run: echo "Running tests on ${{ github.event.inputs.environment }}"
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
