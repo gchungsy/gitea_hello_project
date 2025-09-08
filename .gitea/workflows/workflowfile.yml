@@ -27,8 +27,8 @@ jobs:
         run: |
           PYTHONPATH=. pytest --html=report.html --self-contained-html --maxfail=1 --disable-warnings -q
 
-      - name: Upload report as package
-        uses: gitea/act_runner_upload_artifact@v1
-        with:
-          name: pytest-report
-          path: report.html
+      #- name: Upload report as package
+      #  uses: gitea/act_runner_upload_artifact@v1
+      #  with:
+      #    name: pytest-report
+      #    path: report.html
