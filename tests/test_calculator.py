@@ -8,3 +8,11 @@ def test_add():
 
 def test_subtract():
     assert subtract(5, 3) == 2
+
+
+
+import os
+
+def test_env_variable():
+    env = os.getenv("ENV_NAME")
+    assert env == "production"

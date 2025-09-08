@@ -10,10 +10,12 @@ on:
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
+    env:
+      ENV_NAME: production
     strategy:
       matrix:
         python-version: [ "3.9", "3.10", "3.11" ]
-        os: [ubuntu-latest, linux]
+        #os: [ubuntu-latest, linux]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
