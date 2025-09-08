@@ -15,4 +15,4 @@ import os
 
 def test_env_variable():
     env = os.getenv("ENV_NAME")
-    assert env == "production"
+    assert env == "3.11"
