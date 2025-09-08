@@ -28,9 +28,6 @@ jobs:
         #os: [ubuntu-latest, linux]
     steps:
 
-      - name: Set environment
-        run: echo "Running tests on ${{ github.event.inputs.environment }}"
-
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -38,7 +35,7 @@ jobs:
 
       - name: Set environment
         run: echo "Running tests on ${{ github.event.inputs.environment }}"
-        
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -51,11 +48,15 @@ jobs:
 
       - name: Run tests
         run: |
-          PYTHONPATH=. pytest --html=report_${{ matrix.python-version }}.html --self-contained-html --maxfail=1 --disable-warnings -q
+          PYTHONPATH=. pytest \
+            --html=report_${{ matrix.python-version }}.html \
+            --self-contained-html \
+            --maxfail=1 --disable-warnings -q
+
 
       - name: Upload report as package
         uses: actions/upload-artifact@v3
         with:
-          name: pytest-report
+          name: pytest-report-${{ matrix.python-version }}
           path: report_${{ matrix.python-version }}.html
 
