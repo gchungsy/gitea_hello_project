@@ -57,6 +57,6 @@ jobs:
       - name: Upload report as package
         uses: actions/upload-artifact@v3
         with:
-          name: pytest-report
+          name: pytest-report-${{ matrix.python-version }}
           path: report_${{ matrix.python-version }}.html
 
