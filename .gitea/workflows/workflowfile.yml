@@ -27,6 +27,8 @@ jobs:
         python-version: [ "3.9", "3.10", "3.11" ]
         #os: [ubuntu-latest, linux]
     steps:
+      - name: Update apt cache
+        run: apt update
 
       - name: Checkout repository
         uses: actions/checkout@v3
