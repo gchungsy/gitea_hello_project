@@ -55,7 +55,6 @@ jobs:
             --self-contained-html \
             --maxfail=1 --disable-warnings -q
 
-
       - name: Upload report as package
         uses: actions/upload-artifact@v3
         with:
