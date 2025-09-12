@@ -8,15 +8,15 @@ on:
     - cron: '0 2 * * *'
   workflow_dispatch:
     # Optional inputs
-    inputs:
-      branch:
-        description: 'Branch to run tests on'
-        required: true
-        default: 'main'
-      environment:
-        description: 'Target environment'
-        required: false
-        default: 'staging'
+    # inputs:
+    #   branch:
+    #     description: 'Branch to run tests on'
+    #     required: true
+    #     default: 'main'
+    #   environment:
+    #     description: 'Target environment'
+    #     required: false
+    #     default: 'staging'
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
