@@ -57,6 +57,7 @@ jobs:
 
       - name: Upload report as package
         uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: pytest-report-${{ matrix.python-version }}
           path: report_${{ matrix.python-version }}.html
