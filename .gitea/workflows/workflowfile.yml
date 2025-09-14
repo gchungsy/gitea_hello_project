@@ -32,15 +32,16 @@ jobs:
         #os: [ubuntu-latest, linux]
     steps:
 
+      - name: Update apt cache
+        run: | 
+          apt-get update -y
+          apt-get install -y curl git nodejs npm
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.inputs.branch }}
 
-      - name: Update apt cache
-        run: | 
-          apt-get update -y
-          apt-get install -y curl git
 
       - name: Set environment
         run: echo "Running tests on ${{ github.event.inputs.environment }}"
