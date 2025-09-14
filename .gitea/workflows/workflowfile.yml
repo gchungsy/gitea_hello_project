@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Update apt cache
         run: apt update
+        retry: 3
 
       - name: Checkout repository
         uses: actions/checkout@v3
