@@ -30,7 +30,9 @@ jobs:
         #os: [ubuntu-latest, linux]
     steps:
       - name: Update apt cache
-        run: apt update
+        run: | 
+          apt-get update
+          apt-get install -y curl git
 
       - name: Checkout repository
         uses: actions/checkout@v3
