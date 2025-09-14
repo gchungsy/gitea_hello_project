@@ -21,6 +21,8 @@ jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
     retry: 3
+    container:
+      image: ubuntu:22.04
     env:
       ENV_NAME: ${{ matrix.python-version }}
     strategy:
