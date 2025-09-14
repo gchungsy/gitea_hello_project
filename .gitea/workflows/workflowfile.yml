@@ -20,7 +20,7 @@ on:
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
-    retry: 3
+    retry: 5
     # container:
     #   image: ubuntu:22.04
     env:
@@ -32,9 +32,9 @@ jobs:
         #os: [ubuntu-latest, linux]
     steps:
 
-      # - name: Update apt cache
-      #   run: | 
-      #     apt-get update -y
+      - name: Update apt cache
+        run: | 
+          apt-get update -y
 
       - name: Checkout repository
         uses: actions/checkout@v3
