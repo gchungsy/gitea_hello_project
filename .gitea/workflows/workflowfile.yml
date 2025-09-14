@@ -63,6 +63,6 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: pytest-report-${{ matrix.python-version }}
+          name: pytest-report
           path: report_${{ matrix.python-version }}.html
 
