@@ -2,8 +2,9 @@ name: Gitea Actions Demo
 run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
@@ -19,6 +20,7 @@ on:
     #     default: 'staging'
 jobs:
   Explore-Gitea-Actions:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     # container:
     #   image: ubuntu:22.04
@@ -52,6 +54,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Ensure browsers are installed
+        run: python -m playwright install --with-deps
+        
       - name: Run tests
         run: |
           PYTHONPATH=. pytest \
@@ -61,8 +66,13 @@ jobs:
 
       - name: Upload report as package
         uses: actions/upload-artifact@v3
-        if: always()
+        if: ${{ !cancelled() }}
         with:
           name: pytest-report
           path: report_${{ matrix.python-version }}.html
 
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-traces
+          path: test-results/
