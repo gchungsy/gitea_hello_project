@@ -20,6 +20,7 @@ on:
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
+    retry: 3
     env:
       ENV_NAME: ${{ matrix.python-version }}
     strategy:
@@ -30,7 +31,6 @@ jobs:
     steps:
       - name: Update apt cache
         run: apt update
-        retry: 3
 
       - name: Checkout repository
         uses: actions/checkout@v3
