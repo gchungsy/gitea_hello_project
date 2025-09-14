@@ -20,20 +20,20 @@ on:
 jobs:
   Explore-Gitea-Actions:
     runs-on: ubuntu-latest
-    retry: 5
     # container:
     #   image: ubuntu:22.04
     env:
       ENV_NAME: ${{ matrix.python-version }}
     strategy:
-      fail-fast: false
       matrix:
         python-version: [ "3.9", "3.10", "3.11" ]
         #os: [ubuntu-latest, linux]
+      fail-fast: false
+    retry: 5
     steps:
-
       - name: Update apt cache
-        run: | 
+        run: |
+          sleep 10
           apt-get update -y
 
       - name: Checkout repository
