@@ -27,13 +27,11 @@ jobs:
     strategy:
       matrix:
         python-version: [ "3.9", "3.10", "3.11" ]
-        os: [ubuntu-latest, linux]
+        # os: [ubuntu-latest, linux]
       fail-fast: false
     steps:
       - name: Update apt cache
-        run: |
-          sleep 5
-          sudo apt-get update -y
+        run: apt-get update -y
 
       - name: Checkout repository
         uses: actions/checkout@v3
